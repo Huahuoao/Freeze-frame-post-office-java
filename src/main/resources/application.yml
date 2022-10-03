@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: mdhelper
+  cache:
+    redis:
+      time-to-live: 1800000
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://43.143.160.178:3306/soft_mail?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: AUTO
+jwt:
+  header: "Authorization" #token????
+  tokenPrefix: "Bearer " #token??
+  secret: "qwertyuiop7418520" #??
+  expireTime: 600 #token???? (??) ???????
+
+
+
