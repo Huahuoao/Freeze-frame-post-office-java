@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8077
 spring:
   application:
     name: mdhelper
@@ -12,6 +12,13 @@ spring:
       url: jdbc:mysql://43.143.160.178:3306/soft_mail?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: root
       password: 123456
+  servlet:
+    multipart:
+      enabled: true #是否启用http上传处理
+      max-request-size: 200MB #最大请求文件的大小
+      max-file-size: 100MB #设置单个文件最大长度
+      file-size-threshold: 1MB #当文件达到多少时进行磁盘写入
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -19,11 +26,12 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: AUTO
-jwt:
-  header: "Authorization" #token????
-  tokenPrefix: "Bearer " #token??
-  secret: "qwertyuiop7418520" #??
-  expireTime: 600 #token???? (??) ???????
 
+
+jwt:
+  header: "Authorization" #token返回头部
+  tokenPrefix: "Bearer " #token前缀
+  secret: "qwertyuiop7418520" #密钥
+  expireTime: 600 #token有效时间 (分钟) 建议一小时以上
 
 
