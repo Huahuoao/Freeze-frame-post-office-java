@@ -1,7 +1,7 @@
-package com.huahuo.app.service;
+package com.huahuo.app.service.impl;
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.baidu.aip.imagesearch.AipImageSearch;
 import com.huahuo.app.utils.JSONUtils;
 import org.json.JSONObject;
@@ -61,7 +61,7 @@ public class BaiduService {
          String text=res.toString(2);
          JSONArray jsonArray = JSON.parseObject(text).getJSONArray("result");
         //填充初始数据，此处过程省略
-        List<com.alibaba.fastjson2.JSONObject> jsonObjectList = jsonArray.toJavaList(com.alibaba.fastjson2.JSONObject.class);
+        List<com.alibaba.fastjson.JSONObject> jsonObjectList = jsonArray.toJavaList(com.alibaba.fastjson.JSONObject.class);
          Map<String, String> map = jsonObjectList.stream().filter(Objects::nonNull)
                 .collect(Collectors.toMap(item -> item.getString("score"), item -> item.getString("cont_sign")));
         int i=3;

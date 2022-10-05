@@ -2,7 +2,7 @@ server:
   port: 8077
 spring:
   application:
-    name: mdhelper
+    name: post-office
   cache:
     redis:
       time-to-live: 1800000

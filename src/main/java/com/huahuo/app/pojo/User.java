@@ -21,6 +21,8 @@ public class User implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @TableField(value = "single_img_id")
+    private String singleImgId;
     /**
      * 用户账号
      */
