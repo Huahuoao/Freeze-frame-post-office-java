@@ -48,8 +48,6 @@ public class ImgController {
     @ApiParam("支持批量")
     public R<Object> simpleUploadImg(@RequestParam("file") List<MultipartFile> files, HttpServletRequest request) throws IOException {
         Object o = imgsService.simpleUpload(files);
-
-
         return R.success(o);
     }
 
