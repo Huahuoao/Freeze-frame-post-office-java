@@ -57,14 +57,14 @@ public class BaiduService {
 //        options.put("pn", "100");
 //        options.put("rn", "250");
         ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
-         JSONObject res = client.similarSearchUrl(url, options);
-         String text=res.toString(2);
-         JSONArray jsonArray = JSON.parseObject(text).getJSONArray("result");
+        JSONObject res = client.similarSearchUrl(url, options);
+        String text=res.toString(2);
+        JSONArray jsonArray = JSON.parseObject(text).getJSONArray("result");
         //填充初始数据，此处过程省略
         List<com.alibaba.fastjson.JSONObject> jsonObjectList = jsonArray.toJavaList(com.alibaba.fastjson.JSONObject.class);
-         Map<String, String> map = jsonObjectList.stream().filter(Objects::nonNull)
+        Map<String, String> map = jsonObjectList.stream().filter(Objects::nonNull)
                 .collect(Collectors.toMap(item -> item.getString("score"), item -> item.getString("cont_sign")));
-        int i=3;
+        int i=6;
         for(Map.Entry<String, String> entry : map.entrySet()){
             if(i==0) break;
             i--;
@@ -75,7 +75,7 @@ public class BaiduService {
             temp.put("value",mapKey);
             arrayList.add(temp);
         }
-           return arrayList;
+        return arrayList;
     }
 
 

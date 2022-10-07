@@ -7,10 +7,13 @@ import com.huahuo.app.pojo.User;
 import com.huahuo.app.service.UserService;
 import com.huahuo.app.service.impl.BaiduService;
 import com.huahuo.app.utils.JWTUtils;
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,39 +67,10 @@ public class UserController {
     }
 
     @PostMapping("/match")
-    public User matchUserToUser(@RequestBody User user) {
-        String url = user.getSingleImgIdUrl();
-        ArrayList<HashMap<String, String>> list = baiduService.similarSearch(url);
-        ArrayList<Map<String, Object>> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            HashMap<String, String> temp = list.get(i);
-            String id = temp.get("id");
-            String va = temp.get("value");
-            Double value = Double.valueOf(va);
-            String cons = user.getConstellation();
-            User userCmp = userMapper.selectBySingleId(id);
-            String consCmp = userCmp.getConstellation();
-            String key = cons + "-" + consCmp;
-            Double num = constellationScoreMap.get(key) * 0.01;
-            double random = Math.random() * 0.1;
-            Double finalNum = num + random + value;
-            Map<String, Object> map = new HashMap<>();
-            map.put("singleid",id);
-            map.put("finalnum",finalNum);
-            result.add(map);
-        }
-        String id = null;
-        for (int i = 0; i < 3; i++) {
-            Map<String,Object> stringDoubleMap = result.get(i);
-
-            Double max = -1.0;
-       if(  (Double)stringDoubleMap.get("finalnum") > max)
-       {
-           max = (Double)stringDoubleMap.get("finalnum");
-           id  = (String)stringDoubleMap.get("singleid");
-           System.out.println(stringDoubleMap);
-       }
-        }
-        return userService.getById(id);
+    public R<User> matchUserToUser(@RequestBody User user) {
+         String percent = null;
+         NumberFormat num = NumberFormat.getPercentInstance();
+         return R.success( userService.matchUser(user),"匹配对象成功！");
     }
 }
+

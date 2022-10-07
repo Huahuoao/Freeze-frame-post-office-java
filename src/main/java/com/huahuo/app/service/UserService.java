@@ -12,4 +12,5 @@ import java.util.Map;
 */
 public interface UserService extends IService<User> {
     public Map<String,Object> login(User user);
+    public User matchUser(User user);
 }
