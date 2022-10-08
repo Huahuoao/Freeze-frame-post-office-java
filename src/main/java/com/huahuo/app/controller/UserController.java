@@ -36,7 +36,7 @@ public class UserController {
     @Autowired
     BaiduService baiduService;
 
-    @PostMapping("/has")
+    @GetMapping("/has")
     public boolean exists(String username) {
         User user = userMapper.selectByUserName(username);
         if (user == null) return false;
@@ -63,7 +63,7 @@ public class UserController {
             return R.error(map.get("token").toString());
         }
         response.setHeader(JWTUtils.USER_LOGIN_TOKEN, (String) map.get("token"));
-        return R.success(map.get("user"));   // 返回一个admin
+        return R.success(map.get("user"));   // 返回一user
     }
 
     @PostMapping("/match")

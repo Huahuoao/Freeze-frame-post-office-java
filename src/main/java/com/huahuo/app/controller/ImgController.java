@@ -46,9 +46,9 @@ public class ImgController {
     @PostMapping("/upload")
     @ApiOperation(value = "普通上传图床")
     @ApiParam("支持批量")
-    public R<Object> simpleUploadImg(@RequestPart @RequestParam("file") List<MultipartFile> files, HttpServletRequest request) throws IOException {
-        Object o = imgsService.simpleUpload(files);
-        return R.success(o);
+    public List simpleUploadImg(@RequestPart @RequestParam("file") List<MultipartFile> files, HttpServletRequest request) throws IOException {
+        List list = imgsService.simpleUpload(files);
+        return list;
     }
 
     /**

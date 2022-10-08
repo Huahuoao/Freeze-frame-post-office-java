@@ -15,7 +15,7 @@ import java.util.List;
 * @createDate 2022-09-29 11:15:41
 */
 public interface ImgsService extends IService<Imgs> {
-   public Object simpleUpload(List<MultipartFile> files) throws IOException;
+   public List simpleUpload(List<MultipartFile> files) throws IOException;
 
    public Imgs simpleUpload(MultipartFile file) throws IOException;
 

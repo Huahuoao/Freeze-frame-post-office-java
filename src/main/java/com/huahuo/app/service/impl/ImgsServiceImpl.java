@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.huahuo.app.common.ImgR;
 import com.huahuo.app.common.R;
+import com.huahuo.app.exception.UserException;
 import com.huahuo.app.mapper.ImgsMapper;
 import com.huahuo.app.pojo.Imgs;
 import com.huahuo.app.service.ImgsService;
@@ -35,16 +36,16 @@ public class ImgsServiceImpl extends ServiceImpl<ImgsMapper, Imgs>
     ImgsService imgsService;
 
     @Override
-    public Object simpleUpload(List<MultipartFile> files) throws IOException {
+    public List<ImgR> simpleUpload(List<MultipartFile> files) throws IOException {
         String MdUrl = null;
         List<ImgR> list = new ArrayList<>();
 
         for (MultipartFile file : files) {
             ImgR imgR = new ImgR();
             if (file.isEmpty()) {
-                return "文件为空，请重新上传";}
+                throw new UserException("图片为空！");
+            }
             try {
-
                 MdUrl=null;
                 String url = null;
                 String fileUrl = qiniuService.saveImage(file);
