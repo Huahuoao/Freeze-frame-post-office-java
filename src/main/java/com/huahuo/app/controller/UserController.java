@@ -66,5 +66,13 @@ public class UserController {
          NumberFormat num = NumberFormat.getPercentInstance();
          return R.success( userService.matchUser(user),"匹配对象成功！");
     }
+
+
+    @PostMapping("/register")
+    public R<String> register(@RequestBody User user)
+    {
+        userService.save(user);
+        return R.success("注册成功");
+    }
 }
 

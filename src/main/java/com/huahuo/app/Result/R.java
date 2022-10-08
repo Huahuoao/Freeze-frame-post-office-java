@@ -45,6 +45,13 @@ public class R<T> implements Serializable {
         r.code = ALL_OK;
         return r;
     }
+
+    public static <T> R<T> success(String msg) {
+        R<T> r = new R<T>();
+        r.msg=msg;
+        r.code = ALL_OK;
+        return r;
+    }
     public static <T> R<T> error(String msg) {
         R r = new R();
         r.msg = msg;
