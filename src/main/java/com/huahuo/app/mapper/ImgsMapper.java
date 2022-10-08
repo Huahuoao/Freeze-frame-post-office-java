@@ -1,7 +1,7 @@
 package com.huahuo.app.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.huahuo.app.pojo.Imgs;
+import com.huahuo.app.po.Imgs;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 

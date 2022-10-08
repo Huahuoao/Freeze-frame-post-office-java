@@ -1,4 +1,4 @@
-package com.huahuo.app.pojo;
+package com.huahuo.app.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

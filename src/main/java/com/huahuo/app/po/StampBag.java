@@ -1,67 +1,58 @@
-package com.huahuo.app.pojo;
+package com.huahuo.app.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 /**
  * 
- * @TableName imgs
+ * @TableName stamp_bag
  */
+@TableName(value ="stamp_bag")
 @Data
-@TableName(value ="imgs")
-public class Imgs implements Serializable {
+public class StampBag implements Serializable {
     /**
-     * 
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 
+     * 用户id
      */
-    @TableField(value = "url")
-    private String url;
+    @TableField(value = "user_id")
+    private Integer userId;
 
     /**
-     * 
+     * 容量
      */
-    @TableField(value = "mrakdown_url")
-    private String mrakdownUrl;
+    @TableField(value = "size")
+    private Integer size;
 
     /**
-     * 
-     */
-    @TableField(value = "create_time")
-    private LocalDateTime createTime;
-
-    /**
-     * 
-     */
-    @TableField(value = "miniurl")
-    private String miniurl;
-
-
-
-    /**
-     * 
-     */
-    @TableField(value = "file_key")
-    private String fileKey;
-
-    /**
-     * 
+     * 名称
      */
     @TableField(value = "name")
     private String name;
 
     /**
-     * 
+     * 是否删除
+     */
+    @TableField(value = "is_delete")
+    private Integer isDelete;
+
+    /**
+     * 创建时间
+     */
+    @TableField(value = "crete_time")
+    private LocalDateTime creteTime;
+
+    /**
+     * 修改时间
      */
     @TableField(value = "update_time")
     private LocalDateTime updateTime;
@@ -80,14 +71,13 @@ public class Imgs implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Imgs other = (Imgs) that;
+        StampBag other = (StampBag) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
-            && (this.getMrakdownUrl() == null ? other.getMrakdownUrl() == null : this.getMrakdownUrl().equals(other.getMrakdownUrl()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getMiniurl() == null ? other.getMiniurl() == null : this.getMiniurl().equals(other.getMiniurl()))
-            && (this.getFileKey() == null ? other.getFileKey() == null : this.getFileKey().equals(other.getFileKey()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getSize() == null ? other.getSize() == null : this.getSize().equals(other.getSize()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getIsDelete() == null ? other.getIsDelete() == null : this.getIsDelete().equals(other.getIsDelete()))
+            && (this.getCreteTime() == null ? other.getCreteTime() == null : this.getCreteTime().equals(other.getCreteTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
@@ -96,12 +86,11 @@ public class Imgs implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
-        result = prime * result + ((getMrakdownUrl() == null) ? 0 : getMrakdownUrl().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
-        result = prime * result + ((getMiniurl() == null) ? 0 : getMiniurl().hashCode());
-        result = prime * result + ((getFileKey() == null) ? 0 : getFileKey().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getSize() == null) ? 0 : getSize().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getIsDelete() == null) ? 0 : getIsDelete().hashCode());
+        result = prime * result + ((getCreteTime() == null) ? 0 : getCreteTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
@@ -113,12 +102,11 @@ public class Imgs implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", url=").append(url);
-        sb.append(", mrakdownUrl=").append(mrakdownUrl);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", miniurl=").append(miniurl);
-        sb.append(", fileKey=").append(fileKey);
+        sb.append(", userId=").append(userId);
+        sb.append(", size=").append(size);
         sb.append(", name=").append(name);
+        sb.append(", isDelete=").append(isDelete);
+        sb.append(", creteTime=").append(creteTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

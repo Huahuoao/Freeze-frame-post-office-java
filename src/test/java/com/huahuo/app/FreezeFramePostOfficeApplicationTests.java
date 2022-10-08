@@ -2,21 +2,14 @@ package com.huahuo.app;
 
 import com.baidu.aip.imagesearch.AipImageSearch;
 import com.huahuo.app.mapper.UserMapper;
-import com.huahuo.app.pojo.User;
 import com.huahuo.app.service.UserService;
-import com.huahuo.app.service.impl.BaiduService;
+import com.huahuo.app.service.impl.BaiduServiceImpl;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
-
-import static com.huahuo.app.utils.ConstellationUtil.constellationScoreMap;
 
 @SpringBootTest
 class FreezeFramePostOfficeApplicationTests {
@@ -53,7 +46,7 @@ class FreezeFramePostOfficeApplicationTests {
     }
 
     @Autowired
-    BaiduService baiduService;
+    BaiduServiceImpl baiduServiceImpl;
     @Autowired
     UserMapper userMapper;
     @Autowired

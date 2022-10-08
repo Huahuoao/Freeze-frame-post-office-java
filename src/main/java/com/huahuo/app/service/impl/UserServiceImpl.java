@@ -2,7 +2,7 @@ package com.huahuo.app.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huahuo.app.mapper.UserMapper;
-import com.huahuo.app.pojo.User;
+import com.huahuo.app.po.User;
 import com.huahuo.app.service.UserService;
 import com.huahuo.app.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Autowired
     UserMapper userMapper;
     @Autowired
-    BaiduService baiduService;
+    BaiduServiceImpl baiduServiceImpl;
 
     @Override
     public Map<String, Object> login(User user) {
@@ -57,7 +57,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public User matchUser(User user) {
         String url = user.getSingleImgIdUrl();
-        ArrayList<HashMap<String, String>> list = baiduService.similarSearch(url);
+        ArrayList<HashMap<String, String>> list = baiduServiceImpl.similarSearch(url);
         ArrayList<Map<String, Object>> result = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             HashMap<String, String> temp = list.get(i);

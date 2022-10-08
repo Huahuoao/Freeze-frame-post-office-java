@@ -2,7 +2,7 @@ package com.huahuo.app.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huahuo.app.mapper.MailMapper;
-import com.huahuo.app.pojo.Mail;
+import com.huahuo.app.po.Mail;
 import com.huahuo.app.service.MailService;
 import org.springframework.stereotype.Service;
 

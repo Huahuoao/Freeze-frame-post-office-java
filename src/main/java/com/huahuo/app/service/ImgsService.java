@@ -2,8 +2,7 @@ package com.huahuo.app.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.huahuo.app.common.ImgR;
-import com.huahuo.app.pojo.Imgs;
+import com.huahuo.app.po.Imgs;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

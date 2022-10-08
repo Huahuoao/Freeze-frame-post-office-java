@@ -2,7 +2,7 @@ package com.huahuo.app.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huahuo.app.mapper.StampBagMapper;
-import com.huahuo.app.pojo.StampBag;
+import com.huahuo.app.po.StampBag;
 import com.huahuo.app.service.StampBagService;
 import org.springframework.stereotype.Service;
 

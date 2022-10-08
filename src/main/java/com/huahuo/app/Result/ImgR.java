@@ -1,4 +1,4 @@
-package com.huahuo.app.common;
+package com.huahuo.app.Result;
 
 import lombok.Data;
 

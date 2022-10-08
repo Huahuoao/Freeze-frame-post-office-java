@@ -2,18 +2,16 @@ package com.huahuo.app.controller;
 
 
 
-import com.huahuo.app.common.R;
-import com.huahuo.app.pojo.Imgs;
+import com.huahuo.app.Result.R;
+import com.huahuo.app.po.Imgs;
 
-import com.huahuo.app.pojo.User;
 import com.huahuo.app.service.ImgsService;
 
 import com.huahuo.app.service.UserService;
-import com.huahuo.app.service.impl.BaiduService;
-import com.huahuo.app.service.impl.QiniuService;
+import com.huahuo.app.service.impl.BaiduServiceImpl;
 
 
-import com.huahuo.app.vo.ImgsVo;
+import com.huahuo.app.dto.ImgsDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +32,9 @@ public class ImgController {
     @Autowired
     UserService userService;
     @Autowired
-    BaiduService baiduService;
+    BaiduServiceImpl baiduServiceImpl;
     private String prefix = "http://riwbp7bw1.hn-bkt.clouddn.com/";
     private String form = "&250px";
-    @Autowired
-   private QiniuService qiniuService;
     @Autowired
     ImgsService imgsService;
 
@@ -59,13 +55,13 @@ public class ImgController {
      */
     @ApiOperation(value = "注册时上传图片")
     @PostMapping("upload/sign")
-    public R<ImgsVo> uploadImgWhenSign(@RequestPart @RequestParam("file") MultipartFile file) throws IOException {
+    public R<ImgsDto> uploadImgWhenSign(@RequestPart @RequestParam("file") MultipartFile file) throws IOException {
         Imgs imgs = imgsService.simpleUpload(file);
-        ImgsVo imgsVo = new ImgsVo();
-        BeanUtils.copyProperties(imgs,imgsVo);
-        String s = baiduService.similarAdd(imgs.getUrl());
-        imgsVo.setSingleId(s);
-        return R.success(imgsVo,"最喜欢图片上传成功！");
+        ImgsDto imgsDto = new ImgsDto();
+        BeanUtils.copyProperties(imgs, imgsDto);
+        String s = baiduServiceImpl.similarAdd(imgs.getUrl());
+        imgsDto.setSingleId(s);
+        return R.success(imgsDto,"最喜欢图片上传成功！");
     }
 
     /**

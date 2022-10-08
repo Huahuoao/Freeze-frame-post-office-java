@@ -1,6 +1,6 @@
 package com.huahuo.app.mapper;
 
-import com.huahuo.app.pojo.Stamp;
+import com.huahuo.app.po.Stamp;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -1,6 +1,6 @@
 package com.huahuo.app.service;
 
-import com.huahuo.app.pojo.StampBag;
+import com.huahuo.app.po.StampBag;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

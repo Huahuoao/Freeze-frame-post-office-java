@@ -1,6 +1,6 @@
 package com.huahuo.app.service;
 
-import com.huahuo.app.pojo.Mail;
+import com.huahuo.app.po.Mail;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

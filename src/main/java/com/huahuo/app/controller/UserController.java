@@ -1,24 +1,18 @@
 package com.huahuo.app.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.huahuo.app.common.R;
+import com.huahuo.app.Result.R;
 import com.huahuo.app.mapper.UserMapper;
-import com.huahuo.app.pojo.User;
+import com.huahuo.app.po.User;
 import com.huahuo.app.service.UserService;
-import com.huahuo.app.service.impl.BaiduService;
+import com.huahuo.app.service.impl.BaiduServiceImpl;
 import com.huahuo.app.utils.JWTUtils;
-import jdk.nashorn.internal.runtime.logging.Logger;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
-import static com.huahuo.app.utils.ConstellationUtil.constellationScoreMap;
 
 /**
  * @作者 花火
@@ -34,7 +28,7 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
     @Autowired
-    BaiduService baiduService;
+    BaiduServiceImpl baiduServiceImpl;
 
     @GetMapping("/has")
     public boolean exists(String username) {

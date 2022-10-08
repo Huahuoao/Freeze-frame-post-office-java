@@ -32,7 +32,8 @@ import java.util.List;
 
 @ComponentScan(basePackages = "com.huahuo.app")
 public class WebMvcConfig extends WebMvcConfigurationSupport {
-    static final String[] ORIGINS = new String[] {"GET", "POST", "PUT", "DELETE","OPTIONS"};
+    static final String[] ORIGINS = new String[]{"GET", "POST", "PUT", "DELETE", "OPTIONS"};
+
     /**
      * 设置静态资源映射
      *
@@ -41,9 +42,13 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new UserLoginInterceptor())
-                .addPathPatterns("/img/**")
-                .addPathPatterns("/user/**")
-                .excludePathPatterns("/user/login");//开放登录路径
+                //拦截所有
+                .addPathPatterns("/**")
+                //开放登录路径,以及注册接口
+                .excludePathPatterns("/user/login")
+                .excludePathPatterns("/user/has")
+                .excludePathPatterns("/user/match");
+
     }
 
     @Override
@@ -100,6 +105,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 //预请求的结果的有效期，默认30分钟,这里为一天
                 .maxAge(24 * 60 * 60);
     }
+
     @Bean
     public Docket createRestApi() {
         // 文档类型

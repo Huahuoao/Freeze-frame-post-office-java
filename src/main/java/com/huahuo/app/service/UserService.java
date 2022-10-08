@@ -1,6 +1,6 @@
 package com.huahuo.app.service;
 
-import com.huahuo.app.pojo.User;
+import com.huahuo.app.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.Map;

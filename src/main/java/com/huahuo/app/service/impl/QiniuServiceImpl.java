@@ -1,6 +1,7 @@
 package com.huahuo.app.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.huahuo.app.service.QiniuService;
 import com.huahuo.app.utils.FileUtil;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -18,8 +19,8 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Service
-public class QiniuService {
-    private static final Logger logger = LoggerFactory.getLogger(QiniuService.class);
+public class QiniuServiceImpl implements QiniuService {
+    private static final Logger logger = LoggerFactory.getLogger(QiniuServiceImpl.class);
 
     // 设置好账号的ACCESS_KEY和SECRET_KEY
     String ACCESS_KEY = "isGLzqxQMhq8JZBA7ln7KaKiTPIgMPNoDb6d2iqg";
@@ -40,11 +41,12 @@ public class QiniuService {
     private static String QINIU_IMAGE_DOMAIN = "riwbp7bw1.hn-bkt.clouddn.com/";
 
     // 简单上传，使用默认策略，只需要设置上传的空间名就可以了
+    @Override
     public String getUpToken() {
         return auth.uploadToken(bucketname);
     }
-
-    public String saveImage(MultipartFile file) throws IOException {
+    @Override
+    public String saveImage(MultipartFile file) {
         try {
             int dotPos = file.getOriginalFilename().lastIndexOf(".");
             if (dotPos < 0) {
@@ -69,10 +71,12 @@ public class QiniuService {
             }
         } catch (QiniuException e) {
             // 请求失败时打印的异常的信息
-
             return null;
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
+    @Override
     public void deleteImg(String fileKey)
     {
         //构造一个带指定 Region 对象的配置类

@@ -1,0 +1,8 @@
+    //一切正常
+    public static final String ALL_OK = "00000";
+    //获取资源失败
+    public static final String GET_RESOURCES_FAILED = "C0001";
+    //默认错误码
+    public static final String DEFAULT_ERROR_CODE = "C0000";
+    //图片为空
+    public static final String IMAGE_IS_BLANK = "A1001";
