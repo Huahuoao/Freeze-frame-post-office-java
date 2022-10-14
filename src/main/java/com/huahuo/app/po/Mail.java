@@ -50,7 +50,8 @@ public class Mail implements Serializable {
      */
     @TableField(value = "msg")
     private String msg;
-
+    @TableField(value = "wyw")
+    private String wyw;
     /**
      * 创建时间
      */

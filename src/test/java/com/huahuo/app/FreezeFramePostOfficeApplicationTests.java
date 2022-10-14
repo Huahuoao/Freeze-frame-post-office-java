@@ -1,6 +1,9 @@
 package com.huahuo.app;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.baidu.aip.imagesearch.AipImageSearch;
+import com.huahuo.app.api.TransApi;
 import com.huahuo.app.mapper.UserMapper;
 import com.huahuo.app.service.UserService;
 import com.huahuo.app.service.impl.BaiduServiceImpl;
@@ -8,8 +11,12 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class FreezeFramePostOfficeApplicationTests {
@@ -52,7 +59,19 @@ class FreezeFramePostOfficeApplicationTests {
     @Autowired
     UserService userService;
 
+    @Autowired
+    TransApi transApi;
+    @Test
+    public void transwyw()
+    {
 
+        String text = "我爱你";
+        String transResult = transApi.getTransResult(text, "auto", "wyw");
+        com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(transResult);
+        String trans_result = jsonObject.getString("trans_result");
+        ArrayList<Map<String,String>> list = JSON.parseObject(trans_result,ArrayList.class);
+         System.out.println(list.get(0).get("dst"));
+    }
 
 }
 

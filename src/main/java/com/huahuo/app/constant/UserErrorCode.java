@@ -1,5 +1,6 @@
 package com.huahuo.app.constant;
 
 public class UserErrorCode {
-    public static final String IMAGE_IS_BLANK = "A1001";
+    //照片为空
+    public static final String IMAGE_IS_BLANK = "image is blank！！";
 }

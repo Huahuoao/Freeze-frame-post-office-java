@@ -2,7 +2,7 @@ package com.huahuo.app.controller;
 
 
 
-import com.huahuo.app.Result.R;
+import com.huahuo.app.common.R;
 import com.huahuo.app.po.Imgs;
 
 import com.huahuo.app.service.ImgsService;

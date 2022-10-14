@@ -1,6 +1,5 @@
 package com.huahuo.app.common;
 
-import com.huahuo.app.Result.R;
 import com.huahuo.app.exception.UserException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

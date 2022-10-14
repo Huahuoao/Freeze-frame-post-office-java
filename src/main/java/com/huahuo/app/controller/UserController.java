@@ -1,7 +1,7 @@
 package com.huahuo.app.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.huahuo.app.Result.R;
+import com.huahuo.app.common.R;
 import com.huahuo.app.mapper.UserMapper;
 import com.huahuo.app.po.User;
 import com.huahuo.app.service.UserService;

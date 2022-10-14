@@ -2,7 +2,7 @@ package com.huahuo.app.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.huahuo.app.Result.ImgR;
+import com.huahuo.app.common.ImgR;
 import com.huahuo.app.exception.UserException;
 import com.huahuo.app.mapper.ImgsMapper;
 import com.huahuo.app.po.Imgs;
